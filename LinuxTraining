@@ -1,0 +1,1638 @@
+Installing Virtual Box: Linux
+run http://www.virtualbox.org and download for MacOS platform
+
+go to google.com and search for “Broadcom” -> “support and services” ->”Document downloads and support” ->”Customer Support Portal” ->”Register” -> “Login” -> “After login a new option appearing download and cloud icon right next your name”-> In cloud click -> “Vmware Cloud Foundation” -> Dashboard -> “My Downloads” -> “Vmware workstation player” -> choosing the latest version will not allow you to download -> Choose the past version like if latest is 17 then 16 try to download -> after downloading follow the instruction keep everything static
+
+Now open oracle virtual box -> click on new ->Give name -> folder no need to touch -> ISO image leave as it -> Type linux -> Version Linux 5.x 64 -> Hardware -> Ram 2gb -> processor leave as it is -> Hardware 20gb -> Settings (Network) -> Changed to bridged Adapter( Done and also we need to download osi)
+
+Using virtual Machine -> create a new virtual machine -> I will install the OS later-> CentOS 64-bit ->store virtual disk at single file -> customise hardware -> network adapter -> bridged adapter -> finish
+
+download Linux ubuntu/kali/centos(you can use any version) -> download centos 7 -> centos.org -> x86_64 -> pick up the first mirror -> iso with highest size ->
+
+In oracle virtual box -> In the created Virtual box -> select start up disk -> click on add -> click open -> choose -> start -> Install OS7 (up and down arrow)
+
+In Vmware -> right click on VMware -> setting -> CD/DVD -> use ISO image -> ok -> green button or play virtual machine
+
+Hit Alt + ctrl or right ctrl key on your keyboard and you will get mouse back -> In software selection select -> Server with GUI -> done
+
+Installation Destination -> select -> click on it and click again
+
+click on network & host name -> specify the host name -> click apply -> click on configure -> general -> automatically connect to network when its available -> save -> automatically will on -> begin installation -> create root password -> admin password -> also create user -> click reboot -> license information -> click on license information -> finish configuration -> created login screen -> click double screen at bottom -> next -> next -> location service off -> start using centOS linux -> right click open terminal -> installation of linux done
+
+aws free account -> free cloud computing – aws free tier -> create free account -> compute -> sign in -> click EC2 -> select region at top (nearest region) -> launch instance -> give name -> My linuxVm -> browse more AMIs ->select red hat -. Give name -> create a key pair – attach this key pair to putty -> configure storage ->20 -> launch instance
+
+Download Putty Client on windows machine -> In host Name or Ip address give linux machine ip address -> load -> open -> allow you to connect through command line
+
+Windows 10 or newer version(ssh build in client)-> command prompt -> ssh Ipaddress of linux machine -> you will connect with linux machine
+
+if you are using windows10 and above you do not have to install putty -> then command prompt then use ssh
+
+putty allows you to connect windows system to linux system remotely
+
+if you are trying to connect linux from Mac you do not need to install putty
+
+open a terminal on your Mac run following command # ssh -l iafzal(username of linux machine) linuxipaddress
+
+download putty for windows for 64 bit
+
+ifconfig or ip adds – in linux terminal will give me the ip address
+
+first interface – emp0s3(contains your ip address i.e init) and second Interface -Lo(ignore) and third interface – vm (ignore)
+
+Also when you connect with putty with linux you have to give username and password you gave while creating the linux user.
+
+root@MyfirstLinuxVM ~]#—- root is username and MyFirstLinuxVM is password
+
+Ctrl + C === to get linux prompt
+
+whoami — root
+
+hostname — MyfirstLinux
+
+Ctrl + C == exit
+
+top — to get information
+
+ls – l |(pipe)
+
+# cd / (root directory ) = because everything starts from root directory
+
+ls -l
+
+/boot – contains files that is used by boot loader
+
+/root – root user home directory not same as /
+
+/dev – system devices (eg disk, cdrom, speakers, flash drive, keyboard etc)
+
+/etc – configuration files ( if you change any files of this take a back up)
+
+/bin – /usr/bin – everyday user commands
+
+/sbin – /usr/sbin – system /filesystem commands
+
+/opt – optional add on application — installing oracle or sap are installed in /opt
+
+/proc – running processes (only exist in memory) ( like processes running now)
+
+/lib – usr/lib – c programming library files needed by commands and apps
+
+strace -e open pwd – which library files is used for which command you can use this
+
+/tmp – directory for temporary files (create temp file)
+
+/home – directory for user
+
+/var – system logs
+
+/run – system daemons that starts very early to store temporary runtime files like PID files
+
+/mnt – to mount external file system (NFS)
+
+/media – cd rom mounts
+
+pwd – present working directory
+
+su – ( to get the super user)
+
+file info
+
+Properties of file and directories: Linux
+Type starting with d means directory and starts with l – is a link and starts with nothing its a text file
+
+Number of hardline – sub directories and parent directory
+
+Owner – who owns
+
+Size , month, time and day created
+
+cd Desktop
+
+Linux File Type
+
+– Regular file
+
+d directory
+
+l link ( soft link or hard link)
+
+c special file or device file (hard drive or usb drive)
+s socket (network communication)
+
+p named pipe
+
+b block device
+
+Root: Linux
+Root Account – root is an account or username or linux machine
+
+/ – very first directory
+
+root home directory – /root
+
+change the password: Linux
+of the same user whoami
+
+#passwd
+
+Path: Linux
+Absolute Path – / (always begins with / – the path starts at the root directory)
+
+example cd /var/log/samba
+
+Relative Path – ( does not start with /)
+
+cd /var
+
+cd log
+
+cd samba
+
+Create files and directories: Linux
+#touch jerry
+
+#ls -ltr(timely order and reverse)
+
+#cp jerry jar – copies jerry into jar file which is created again apart from jerry
+
+# vi homer [ if you want to get out shift + : + w + q : !] and hit enter and this will create homer
+
+# Touch Bar march Jake – creates three files
+
+#mkdir dir
+
+#mkdir dir dir1
+
+if you try to create something in /etc it will give error because you are not authorised to edit that because you are not root
+
+#cp -R config /tmp/config-bak // R defines config is a directory
+
+find and locate: Linux
+#find . -name “kramer” – . means current directory and -name means kramer
+
+#locate kramer — if does not return any output then in root updatedb and also make sure mlocate package is installed
+
+to install #yum install locate
+
+to check #rpm -qa | grep locate
+
+to find the network file
+
+#find / -name “rfcfg-enp0s3” or network file name “.nmconnection”
+
+Wild Card: Linux
+* represents 0 or more character
+
+? represents a single character
+
+[] represents a range of character
+
+#rm abc* –to remove
+
+#ls -l abc — list all the files that start with abc
+
+#touch abcd{1..9}-xyz = will create all the 1 to 9 files
+
+#ls -l *[cd]* | more == more will give 1 page one at a time
+
+soft and hard link: Linux
+inode – pointer or number of file on hard disk
+
+softlink – link will be removed if file is removed or renamed
+
+hardlink – deleting, renaming or moving the original file will not affect the hard link
+
+to create a hardlink
+
+#ln
+
+to create a softlink
+
+#ln -s
+
+link is a shortcut
+
+you cannot create soft or hard link within the same directory with the same name that is why we will create links in /tmp directory
+
+#ln -s /home/iafzal/hulk
+
+to write this in the link which is hulk
+
+#echo “hulk is a superhero” > hulk
+
+# cat hulk == it will display it
+
+to find the inode of the file
+
+#ls -ltri
+
+#ls -ltri hulk
+
+#ls -ltri /home/iafzal/hulk
+
+touch hulk
+
+#ln /home/iafzal/hulk. === hard link
+
+Command: Linux
+command typically have the syntax
+
+command options arguments
+
+options – consist of hypen or dash followed by a single letter
+
+arguments – most commands are used together with one or more arguments
+
+#rm -r /seinfile – remove directory if use -f it won’t
+
+#man ls — helps about command and space to get more and q to quit
+
+Files Permission: Linux
+three level u, g and o
+
+#chmod g-w jerry == group which is second part will get this rights and it will remove write permission from group
+
+#chmod a-r jerry == to remove read permission for all
+
+#chmod u-w jerry
+
+#chmod g+rw jerry == adds this permission to group
+
+#chmod ugo+r jerry == adds permission to all
+
+#chmod 444 jerry == adds read permission to all
+
+0 – no permission, 1 – execute permission , 2- write permission, 3 – execute + write permission, 4 – read permission, 5- read + execute permission, 6 – read +write permission , 7 – read + write + execute
+
+#chmod 764 file === 7 will be user , 6 – group , 4- others
+
+Owners of file and directory: Linux
+User and group
+
+chown – changes the ownership of a file
+
+chgrp – changes the group ownership of a file
+
+Recursive ownership change option == -R
+
+#chown root Lisa == file of Lisa owner will be change to root
+
+#chgrp root Lisa === file of Lisa group will be change to root
+
+#exit to logout of root account
+
+#cd .. — to know what is your main root directory
+
+Access control List: Linux
+to add permission for user
+
+#setfacl -m u:user:rwx /path/to/file
+
+#setfacl -m u:group:rw /path/to/file
+
+cascading /giving access to all files and with in files access
+
+#setfacl -dm “entry” /path/to/file”
+
+to remove
+
+#setfacl -rm
+
+to remove a specific entry
+
+#setfacl -x u:user /path/to/file
+
+#setfacl -b /path/to/file
+
+to know info about a file
+
+#getfacl filename
+
+#setfacl -m u:iafzl:rw /tmp/txt
+
+#getfacl filename
+
+Help Command: Linux
+#whatis command
+
+#command –help
+
+#man command
+
+Tab completion and up arrow: Linux
+#chm tab completes the command
+
+#ls j<tab> completes the command
+
+#cd ds<tab> completes the directoyr
+
+up arrow – returns a last command run
+
+#cat jerry
+
+to add contents in a file
+
+#echo “jerry show was created in 1989” >> jerry
+
+to wipe out and recreate
+
+#echo “jerry show was created in 1989” > jerry
+
+#ls -ltr > listingofdir == copies information in listingofdir of the command output
+
+#date >> jerry === appends date to the jerry file
+
+ls -la === hidden files
+
+Input and output redirects: Linux
+stdin – 0 stdout- 1 stderr -2
+
+input <. output >
+
+cat < rahul == allows to edit
+
+echo “text” > Jake
+
+for error. #telnet localhost 2> errorfile
+
+telnet === allows to connect with other machine
+
+tee command: Linux
+#echo “text” | tee Jake === copy the text to Jake and display it also
+
+to append in the the file
+
+#echo “text” | tee -a Jake === append the text to Jake and display it also
+
+#wc -c == displays the nurmber of character
+
+file maintenance commands: Linux
+#mv Jake Jake1 == changes the name from Jake to jake1
+
+#mv Jake /tmp == will move the Jake file into /tmp
+
+#rm-Rf == will forcibly remove
+
+file displays command: Linux
+cat = read file
+
+more = read in page wise
+
+less = read in page wise
+
+head = allows to read number wise for example 10 lines
+
+#head -2 messages
+
+#tail -2 messages
+
+#more messages
+
+Filter/Text Processors Commands: Linux
+cut
+
+#cut filename
+
+#cut –version
+
+#cut -c1 filename. == lets suppose I have a file
+
+abc
+
+cde
+
+efg
+
+it will get
+
+a
+
+c
+
+e
+
+#cut -c1,2,4 filename === lets suppose
+
+abcdef
+
+acedf
+
+it will get
+
+abd
+
+acd
+
+#cut -c1-5 filename === lets suppose
+
+abcdefgh it will get abed
+
+#cut -c1-3,6-8 filename === lets suppose
+
+abcdefghijkl it will get abcfgh
+
+cat /etc/passwd === when you create a user in linux
+
+#cut -d: -f 6 filename === it means separator :
+
+#cut -d: -f 6-7 filename === it means separator :
+
+abc: def:efg:ghi:ijk:klm:mno === 6th field i.e klm
+
+#ls -l|cut -c2-4
+
+awk: Linux
+awk – data extraction
+
+#awk –version
+
+for example if a file contains two words then
+
+abc def
+
+to get the first word
+
+#awk ‘{print $1}’ filename ==== prints abc print first column
+
+#awk ‘{print $2}’ filename === prints second column def
+
+list the columns
+
+#ls -l | awk '{print $1, $3}‘
+
+#ls -l | awk ‘ {print $9}’
+
+#ls -l | awk ‘{print $NF}’ – last column
+
+if you want to search for jerry you
+
+#awk ‘/Jerry/ {print}’ filename
+
+getting the first field separated with delimiter
+
+#awk -F: ‘{print $1}’ /etc/passwd
+
+Replace tom with adam
+
+#echo “Hello Tom” | awk ‘{$2=”Adam” ; print $0 }’
+
+removing all last name with miller
+
+cat txt | awk ‘{$2=”miller”; print $0}’
+
+lines with bytes of 15
+
+#cat txt | awk ‘length($0) > 15’
+
+all text matching the field
+
+#ls -l | awk ‘{if($9 == “miller”) print $0;}’
+
+to count the number of columns
+
+#ls -l | awk ‘{print NF}’
+
+grep: Linux
+grep –version
+
+matching lines
+
+#grep Jake filename
+
+to count how many times showing
+
+#grep -c keyword filename
+
+to search for keyword and ignore case sensitive
+
+#grep -ikeyword filename
+
+display the matched line and there line numbers
+
+#grep -n keyword filename
+
+all the lines that do not match the text
+
+#grep -v keyword filename
+
+printing only the first word of the selected line from grep
+
+#grep -v keyword filename | awk ‘{print $1}’
+
+printing only 3 character
+
+#grep -v keyword filename | awk ‘{print $1}’ | cut -c1-3
+
+to match a line that matches desktop
+
+#ls -l | grep -eye desktop (eye means i)
+
+when you want to search for two words use egrep
+
+#egrep -eye “keyword|keyword2” filename
+
+Sort and Uniq: Linux
+sort command sorts in alphabetical order
+
+uniq commands filters out the duplicated or repeated lines
+
+#sort –version
+
+#sort filename
+
+reverse
+
+#sort -r filename
+
+sorting by the second field
+
+#sort -k2 filename
+
+#ls -l | sort
+
+#ls -l | sort -k9
+
+always sort and then use uniq
+
+#sort filename | uniq //this will give correct output
+
+sort and get the time duplicate has come
+
+#sort filename | uniq -c
+
+display line that is duplicated
+
+#sort filename | uniq -d
+
+wc(word count): Linux
+#wc –version
+
+how many lines , words , and bytes
+
+#wc filename
+
+#wc -l == line
+
+#wc -w == words
+
+#wc -c == bytes
+
+#ls -l | wc -l
+
+#ls -ld
+
+#ls -l | grep drw | wc -l
+
+diff and comp: Linux
+diff == compare two line by line
+
+comp == compare byte by byte
+
+to get the ip address in new system we use == ip a
+
+will not specify the lines which are same but which have differences for example abc def ghi and in other it is def ghi klm
+
+so it will output abc …. klm
+
+#diff filename1 filename2
+
+#cmp filename1 filename2
+
+compress and uncompress: Linux
+.tar = takes a bunch of file and zip them together . does not compress and reduces the size
+
+.gzip = it compresses the file
+
+gzip -d == to uncompress
+
+gunzip
+
+cvf is an option=== container name test.tar
+
+#tar cvf test.tar .
+
+#ls -ltr
+
+will compress it
+
+#tar xvc test.tar
+
+#gzip test.tar
+
+to uncompress
+
+#gzip -d test.tar.gz
+
+Truncate: Linux
+to reduce the size of the file you use truncate
+
+#truncate -s 40 text
+
+first add the content and see the content cat
+
+combining and splitting files: Linux
+combine three files into one
+
+cat file1 file2 file3 > file4
+
+splitting the files into many files
+
+splitting the 2 lines of every country into sepad, sepab like that if it has four files so that 8 lines
+
+#split -l 2 countries sep
+
+Executing Multiple Commands: Linux
+by separating with ;
+
+#ls;pwd;whoami
+
+#mkdir test_dir; cd test_dir; touch test.txt
+
+#ls ; invalid_command; echo “completed”
+
+output : file ; error ; completed
+
+Comparison windows and linux: Linux
+dir – ls-l
+
+ren – mv
+
+copy – cp
+
+move – mv
+
+cls – clear
+
+del – rm
+
+fc – diff
+
+find – grep
+
+command / – man command
+
+chdir – pwd
+
+time – date
+
+Linux file editor: Linux
+a text editor is a program which enables you to create and manipulate data in a linux file
+
+there are several standard text editors available on most linux systems
+
+vi, ed, ex, emacs, pico, vim
+
+vi supplies command for
+
+inserting and deleting text
+
+replacing text
+
+moving around the file
+
+finding and substituting string
+
+cutting and pasting text
+
+common keys
+
+I – insert
+
+esc – escape out of any mode
+
+r- replace
+
+d – delete
+
+:q! – quit without saving
+
+:wq! – quit and save
+
+when you are inserting and you press esc then inserting mode is gone
+
+shift + g + g will save the file
+
+shift : wq! will save the fiel
+
+I : insert mode
+
+u : to get the removed text
+
+x: to delete the character //only when it is not in insert mode
+
+r: replace one letter
+
+a: if you have space want to write some content and the text should move use a
+
+dd- to remove the line
+
+not in insert mode —- /lesson — will search for lesson
+
+to know about vim
+
+http://www.openvim.com
+
+vimgenius.com
+
+sed: Linux
+replace a string in a new file with a new string
+
+finds and delete a line
+
+remove empty lines
+
+remove the n lines
+
+#sed ‘s/kenny/lenny/g’ filename == replace Kenny with Lenny everywhere
+
+It only make changes to the screen
+
+to insert it in the file then we have to use this command
+
+#sed -i ‘s/kenny/lenny/g’ filename == replace kenny with lenny in current file
+
+remove “Constanza” from file
+
+#sed ‘s/Costanza//g’ filename. == remove costanza and display in screen
+
+use -I to insert in the file
+
+any line that matches with the text will be deleted
+
+#sed ‘/Miller/d’ filename == will delete the line that matches with the text
+
+remove empty lines from file
+
+#sed ‘/^$/d’ filename
+
+to remove the first line from
+
+#sed ‘1d’ filename
+
+to remove the first 2 lines
+
+#sed ‘1,2d’ filename
+
+substitute tab with spaces
+
+#sed ‘s/\t/ /g’ filename
+
+any spaces replaces with tab
+
+#sed ‘s/ /\t/g’ filename
+
+want to view line 12 – 18
+
+#sed -n 12,18p filename
+
+all lines except 12-18
+
+#sed 12,18d filename
+
+to get empty space after every line
+
+#sed G filename
+
+substitute all lines with the text except 8th line
+
+#sed ‘8!s/Seinfeld/S/’ filename
+
+how to do in vi
+
+#vi filename
+
+replace miller with s
+
+:%s/miller/s/ and hit enter
+
+User Account Management: Linux
+useradd – to create add new user
+
+groupadd – to create a new group
+
+userdel – to delete a user
+
+groupdel – to delete a group
+
+usermod – to modify a user
+
+when we create a group / user it is created
+
+/etc/passwd
+
+/etc/group
+
+/etc/shadow
+
+the command to create a user
+
+#useradd -g Jake -s bin/bash -c “user description” -m -d /home/miller miller
+
+// -g to add a group
+
+//-s to give shell environment
+
+// -c to user description
+
+// -m user home directory
+
+//-d user itself
+
+#id spiderman
+
+#useradd miller
+
+#groupadd Jake
+
+go to home directory of miller
+
+#userdel -r miller
+
+#groupdel Jake
+
+when you do user add it creates its groupid also
+
+to add miller to another which is Jake how to do this
+
+#usermod -G Jake miller
+
+#grep miller /etc/group
+
+to change the group of miller ls
+
+#chgrp -R Jake miller
+
+/etc/shadow – contains the encrypted password of the user
+
+#useradd -g Mygroup -s /bin/bash -c “New user” -m -d /home/newuser newuser
+
+To check the information
+
+#id
+
+when you create the user
+
+you need to create its password
+
+# passwd newuser
+
+chage command per user: Linux
+#more /etc/login.defs
+
+chage command
+
+#chage -m 5 -M 90 -W 10 -I 3 username—- m – this means you cannot change your date before the expiry of 5 days
+
+M– every 90 days the user will prompt for the password to change
+
+W — prompt will be sent before 10days or warning please update your i.e after 80 days
+
+I- if your account password inactive on 90th day your account will be disabled by this after 3 days
+
+E- Expires and login will not work
+
+switch user and sudo access: Linux
+su – username
+
+sudo command
+
+visudo
+
+File
+
+/etc/sudoers
+
+to become the root user
+
+#su –
+
+give username and password
+
+when you are root
+
+and you want to switch to miller
+
+#su – miller // no password required
+
+//root command == dmidecode.—–fdisk -l (to find the space in disk)
+
+#visudo
+
+look for wheel
+
+root. ALL=(ALL). ALL
+
+now if you want to miller to do that
+
+miller ALL=(ALL) ALL
+
+#usermod -aG wheel miller
+
+#grep wheel /etc/group
+
+now run dmidecode
+
+#sudo dmidecode
+
+Monitor Users what are they doing in system: Linux
+who , last , w , finger, id
+
+#who == will tell you how many people logged in //based number of terminals and how many logged into the system
+
+#last == last time the user logged in and it tells the time and rebooted
+
+#yum install finger -y
+
+id = yourself
+
+#id username
+
+Talking to users: Linux
+users
+
+wall
+
+write
+
+sending messages all user logged in my system
+
+#wall (press two times enter)
+
+Please log off this system is coming down
+
+Miller
+
+press ctrl +d
+
+will be send to all who are logged in my system
+
+#users === to check all the users
+
+if one user is jake
+
+#write jake // once you hit enter
+
+whatever will you write it will be sent to jake
+
+ctrl +d
+
+ActiveDirectory , LDAP, IDM, WinBind, OpenLDap: Linux
+ActiveDirectory – Is in Microsoft for example in facebook when a user logs in his information is stored in the Active Directory where the database is not in the linux machine
+
+IDM – Identity Manager (available in RED HAT)
+
+WinBind – used in linux to communicate with windows( it is samba which allows linux users to get authenticated against windows Active Directory user).. window can only talk to windows. Samba created win bind which allows user to connect with windows with linux
+
+openLdap – its a protocol light weight directory protocol
+
+ldap – lightweight directory access protocol
+
+System Utility Commands: Linux
+date
+
+uptime – how long this system is up for and how many users have been logged in
+
+hostname
+
+uname
+
+which = location of the command which pwd
+
+cal – calendar of this month
+
+bc == calculation
+
+Processes and Jobs: Linux
+Application or Services — which run in our system (ntp, nfs, rsyslog, Apache)
+
+Script – (written in a file and packaged it and it will execute) and that will run in background
+
+Process – run an application generates a process id and it could be associated to application
+
+Daemon – something that continuously runs in background and never stops. It keeps listening to incoming traffic
+
+thread – every process can have many multiple threads
+
+Job – created by a scheduler to run
+
+systemctl replaced with service
+
+ps = process
+
+top = processes running in the system
+
+kill = kills the processes
+
+crontab = schedule these processes
+
+at = like crontab is scheduled one time or adhoc
+
+Systemctl: Linux
+systemctl to control system services
+
+#systemctl start|stop|status servicename.service
+
+#systemctl enable servicename.service
+
+#systemctl restart|reload servicename.service
+
+//list of all the services
+
+#systemctl list-units –all
+
+the output will contain
+
+unit load active sub description
+
+to enable firewall
+
+#systemctl status firewalld.service
+
+to stop if its enable
+
+#systemctl stop firewalld.service
+
+#systemctl disable firewalld.service
+
+$systemctl list-units
+
+#systemctl poweroff
+
+#systemctl halt
+
+#systemctl reboot //will reboot your system
+
+Process Status: Linux
+it displays all the running process in the linux system
+
+#ps
+
+#ps -e === will show all the running processes
+
+#ps aux == shows all the running process in BSD
+
+#ps -ef === shows all running process in proper format
+
+#pu -u username === all the process run by my user
+
+#ps -ef | grep 750 (750 is my running process from systemctl i.e Firewall)
+
+#ps -ef| grep fire
+
+top: Linux
+#top
+
+Pid = shows task unique process id
+
+User = username of the owner of the task
+
+pr = scheduling priority of the process
+
+Ni = nice value of task – means high priority + means low priority
+
+virt = total virtual memory used by task
+
+Res = memory consumed by process in ram
+
+shr = amount of shared memory used by a task
+
+%cpu = cpu usage
+
+%memroy = memory usage
+
+#top -u miller
+
+#top then press c //shows absolute
+
+#top then press k
+
+then specify the pid
+
+#top then M and P to sort all linux running commands
+
+top refreshes data every 30sec
+
+#kill to kill the or terminate
+
+kill [option] [pid]
+
+option = signal number or signal name
+
+kill -l === will give the signal number
+
+kill pid === kill a process with a default signal
+
+kill -1 === Restart
+
+kill -2 === similar to ctrl + c
+
+kill -9 === forcefully kill the process
+
+kill -15 == gracefully kill it
+
+creating a process
+
+sleep 1000
+
+ps -ef |grep sleep
+
+kill -9 pid
+
+kill commands
+
+killall
+
+pkill
+
+Crontab command: Linux
+crontab is used to schedule a task
+
+crontab -e === edit the crontab
+
+crontab -l === list the crontab entries
+
+crontab -r === remove the crontab
+
+crond == crontab daemon
+
+systemctl status crowd – to manage the crond services
+
+#crontab -e
+
+enter minute(more than what is now) space hour(when you want) everyday(*) month(October) day of the week(*) echo “this is my crontab” > crontab-entry
+
+and quit it using vi mode
+
+ls-ltr at the specified time the entry will be there
+
+crontab -l will give this information what crontab we have created
+
+at: Linux
+#at 5:05PM
+
+at> echo “this is my first entry” > at.entry
+
+press ctrl +d will start the at process
+
+check at time it will be created
+
+by ls-l
+
+#atq will show the entries
+
+#atrm name of the entry === will remove the entry
+
+at 4PM + 4days
+
+at now + 5 hours
+
+at 8:00 am sun
+
+at 10:00 am next month
+
+cronjobs: Linux
+by default there are 4 different types of corncobs
+
+hourly
+
+daily
+
+weekly
+
+monthly
+
+all the above crons are set up in
+
+/etc/cron._(_is hourly…..)
+
+/etc/anacrontab //except hourly
+
+/etc/cron.d/0hourly
+
+ls -l cron.*
+
+Process Management: Linux
+#ip addr. === inet address
+
+go in putty
+
+#sleep 100
+
+what are the process that is stopped
+
+#jobs
+
+#bg === this will send sleep 100 into bacground
+
+#jobs === it will show running and not stopped
+
+once you put in background
+
+ps -ef | grep sleep
+
+now to bring in foregrount
+
+#fg
+
+to put in background ctrl + z
+
+In case if you close the terminal of running app your app will stop
+
+however if you create an prices like this
+
+#nohup sleep 75 &
+
+even after killing that terminal the process this process will keep runing
+
+#jobs will output that
+
+#nohup sleep 73 > /dev/null 2>&1 & /// the error you get send it to the /dev/null
+
+priority
+
+#nice -n 5 sleep 10 //give priority 5 to sleep 10
+
+System Monitoring: Linux
+top
+
+df
+
+dmesg
+
+iostat
+
+netstat – ip and ss
+
+free
+
+cat /proc/cpuinfo
+
+cat /proc/meminfo
+
+#df === gives disk partition information
+
+#df -h === human readable
+
+du tells about usage
+
+#dmesg === gives warning , error message about system
+
+#dmesg | more
+
+#iostat === input output statistics
+
+#iostat 1 === refreshes every 1 second
+
+to get the route
+
+#ip route | column -t
+
+#free === physical memory and swap and utilisation free
+
+#cat /proc/cpuinfo === will give all info nation about system
+
+#cat /proc/meminfo === will give memory information
+
+Log monitoring: Linux
+all the log files generated are basically in
+
+/var/log
+
+boot – contains the log system of when the system has booted
+
+chronic(ntp)
+
+cron
+
+maillog
+
+secure
+
+messages
+
+httpd
+
+cd /var/log
+
+ll | more
+
+this is displayed in boot.log
+
+more boot.log \\\ permission denied
+
+cd chrony/
+
+ll | more
+
+more cron
+
+dmesg – will give the information on hardware
+
+more secure – will give login or logout information
+
+tail -f
+
+more messages — all the hardware, software, process, information
+
+cat messages | wc -l
+
+grep -i error messages // inside /var/log
+
+System Maintenance Command: Linux
+shutdown
+
+init 0-7
+
+reboot
+
+halt – shuts down the computer right away kill all
+
+in order to reboot you have to be root
+
+Changing System Hostname: Linux
+#hostnamectl – set-hostname newhostname
+
+file name to edit — /etc/hostname. — /etc/sysconfig/network
+
+reboot the system to get the hostname updated in terminal
+
+Finding System Information: Linux
+#cat /etc/redhat-release
+
+#uname -a
+
+#dmidecode | more
+
+System Architecture: Linux
+A big difference between 32 bit processor and 64 bit processor is the number of calculation performed per seconds. A 64 bit has a dual core, quad core, six core and eight core
+
+# arch === will give the processor type
+
+#uname -a === also will give it
+
+Terminal Control Keys: Linux
+Ctl +u – erases everything you have typed in the command line
+
+ctrl + c – stop or kills a command
+
+ctrl + z – suspend a command
+
+ctrl + d – exit from an interactive program
+
+Terminal Commands: Linux
+clears – clears your screen
+
+exit – exit out of the shell, terminal or user session
+
+script – stores terminal activities in a log file
+
+#script logfile-activity.log
+
+#ls -ltr
+
+it will show this file also
+
+#history ==== to see all the histories
+
+whatever command whatever I have written and output also will be stored
+
+and also
+
+#exit it will stop storing
+
+Recover Root Password: Linux
+Restart your computer
+
+edit grub
+
+change password
+
+reboot
+
+once reboot
+
+select the OS
+
+click e === to edit
+
+come down
+
+at the end of file where root ro and rd.break at end and do ctrl + X
+
+in place of ro === rw\ init=/sysroot/bin/sh and ctrl +X and will start your computer
+
+after that type
+
+#chroot /sysroot
+
+#passwd root
+
+before exiting update selinux information by running the command
+
+#exit
+
+#touch /.autorelabel
+
+#reboot
+
+Sos Report: Linux
+collect and package diagnostic and support data
+
+#sosreport
+
+Environment Variables: Linux
+An environment variable is a dynamic named value that can affect the way the running process will behave on computer
+
+for example a kitchen , bedroom, dinning and playroom are the environment set so kitchen we can only cook but its not legitimate to sleep
+
+to get all the env variable in linux
+
+#printenv
+
+or
+
+#env
+
+to see specific env variabkle
+
+echo $shell
+
+to set the environment variable
+
+export test = 1
+
+echo $test
+
+to set environment variables permanently
+
+this is original file
+
+cp .bashrc .bashrc.org //use this
+
+vi .bashrc
+
+go inside the file and define it
+
+TEST= ‘123’
+
+export TEST
+
+to set environment variables globally
+
+vi /etc/profile or /etc/bashrc
+
+TEST = ‘123’
+
+export TEST
+
+Special permission with setuid, setgid and sticky bit: Linux
+setuid – is assigned a program that will help in accessing /etc/shadow
+
+setgid – (in locate or wall command )
+
+these bits are present for only files which have executable permission
+
+sticky bit – a bit set on files / directory that allows only the owner or root to delete those files
+
+to assign permission at the user level
+
+#chmod u+s xyz.sh // this is to set the user id of the program
+
+to assign permission at the group level
+
+#chmod g+s xyz.sh
+
+to remove special permission at the user and group level
+
+#chmod g-s xyz.sh and u-s xyz.sh
+
+to find all executable in linux with setuid and setgid permission
+
+#find / -perm /6000 -type f
+
+if you go here
+
+#ls -l /usr/bin/passwd
+
+-rws this s represents
+
+sticky bit – it is assigned to the last bit of the permissions
+
+-rwx rwx rwt where t is a sticky bit
+
+#mkdir /allinnone
+
+#chmod 777 /allinnone
+
+#mkdir imrandir
+
+#chmod 777 imrandir
+
+go in another logged in user
+
+try to delete it
+
+#rm -rf imrandir // it will go
+
+how to avoid
+
+chmod + t /allinone
+
+it will have sticky bit
+
+now login with different user and delete will not happen
+
+GNU Screen: Linux
+there are chances when you working with remote machine you might loose connection and loose all your work because of Power, VPN Drop and Network Issue
+
+#rpm -qa | grep screen
+
+install it
+
+#dnf install screen if error install the next one and then install this
+
+#dnf install epel-release
+
+after installation
+
+press alt +a and then suddenly shift + |
+
+this will create vertical split
+
+press alt + a and then suddenly shift + S
+
+this will create horizontal split
+
+to switch from one screen to another
+
+alt + a and then tab
+
+to activate the window
+
+alt + a and c key
+
+#ip a == to get the ip addresss
+
+first open the system from putty
+
+and then from this system in screen
+
+#ssh root@192.168.100.162
+
+#screen -r // this will allow connecting to the detached screen
+
+process id output you get here
+
+and again type
+
+#screen -r copy here proceeds id and run
+
+tmux command(Terminal Multiplex command): Linux
+#rpm -qa | grep tmux
+
+#dnf install tmux -y
+
+after installation to split verticall
+
+ctrl + B and then shift + %
+
+this will divide your terminal into two
+
+if you want to switch
+
+CTRL + B and then press Left , right , up or down
+
+to divide horizontally
+
+ctrl + B and Shift + “
+
+you want to quit tmux just press CTRL + B + D
+
+to see
+
+#tmux ls
+
+to resume the previous session
+
+#tmux a
+
+to give custom name
+
+#tmux new -s miller
+
+ctrl +B +c will create a window
+
+to cycle through window
+
+ctrl + B + N
+
+to resume previous session after detaching
+
+#tmux attach-session -t 0
+
+to kill
+
+#tmux kill-session -t 0
+
+#tmux kill-session -t miller
+
