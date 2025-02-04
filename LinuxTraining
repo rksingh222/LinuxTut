@@ -1636,3 +1636,234 @@ to kill
 
 #tmux kill-session -t miller
 
+Shell: Linux
+Shell is like a container like a Tupperware which stores vegetable. Interface between kernel and user. CLI is a shell.
+
+Your shell – echo $0
+
+you can get all the shells in your command – cat /etc/shells
+
+Windows GUI is a shell, Linux KDE GUI is a shell, Linux sh, bash etc is a shell
+
+Application talks to shell and shell talks to kernel and kernel talks to hardware
+
+Type of linux shell: Linux
+Installing linux with GUI (Gnome or KDE)
+
+command line shell -sh or bash
+
+Shell Script: Linux
+A shell script is an executable file containing multiple shell commands that are executed sequentially.
+
+Shell(#!/bin/bash)
+
+Comments(#comments)
+
+commands(echo, cp, grep etc)
+
+Statements(if , while etc)
+
+shell script should have an executable permission (eg -rwx r-x r-x)
+
+shell script has to be called from an absolute path (eg /home/userdir/script.bash)
+
+if called from the current location then ./script.bash
+
+Basic Shell Scripting: Linux
+Output to screen using echo
+
+Creating Task
+
+Telling your id , current location, your files/directory , system info
+
+creating files or directories
+
+Output a file >
+
+Filter /Text processor through scripts (cut, awk, grep, sort, uniq, wc)
+
+#vi output-screen
+
+#!/bin/bash
+
+echo hello world
+
+quit it
+
+:wq!
+
+when we try to execute this file
+
+#./output-screen
+
+we get an error that can not be executed
+
+when we do
+
+#ls -ltr
+
+we see
+
+-rw-rw-r– and it has no executable permission and we have to give that
+
+#chmod a+x output-screen
+
+#./output-screen and it will give the output
+
+Hello World
+
+we cân also run the file by pwd
+
+#/home/miller/myscripts/output-screen
+
+another shell script
+
+#vi run-command
+
+#!/bin/bash
+
+whoami
+
+echo
+
+pwd
+
+echo
+
+hostname
+
+echo
+
+ls -ltr
+
+echo
+
+exit !wq
+
+and then run
+
+./run-command
+
+defining varibable in shell script
+
+#!/bin/bash
+
+a=Jake
+
+b=miller
+
+c =’Linux’
+
+echo “My first name is $a”
+
+echo “My second name is $b”
+
+echo “I am learning $c”
+
+Taking input from user Script
+: Linux
+Vi output-read-cont
+
+#!/bin/bash
+
+#Author
+
+#Date
+
+#Desc
+
+echo My name is Jake miller
+
+echo
+
+echo What is your name?
+
+read namecont
+
+echo
+
+echo Hello $namecont
+
+:wq!
+
+#./output-read-content
+
+Executing the command by assigning it to variable: Linux
+a =`hostname`
+
+echo my server name is $a
+
+Inside echo you have to use like this
+
+however
+
+a = hostname
+
+$a will give the output of the command
+
+read b
+
+echo $b
+
+if else script: Linux
+#!/bin/bash
+
+count = 100
+
+if [ $count -eq 100]
+
+then
+
+echo count is 100
+
+else
+
+echo count is not 100
+
+fi
+
+File exists script: Linux
+#!/bin/bash
+
+if [-e /home/jakemiller/error.txt ]
+
+then
+
+echo “File exist”
+
+else
+
+echo “File does not exist”
+
+fi
+
+#you can create the file using touch
+
+read a
+
+if [“$a” == y]
+
+for loop script: Linux
+#!/bin/bash
+
+for I in 1 2 3 4 5
+
+do
+
+echo “welcome $I times”
+
+done
+
+for I in eat jump play
+
+do
+
+echo see Imran $i
+
+done
+
+if you cannot run the script you do not have execute permission
+
+#chmod a + x xyz
+
+for I in (1..5)
